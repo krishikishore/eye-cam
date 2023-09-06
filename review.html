@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Captured Image</title>
+</head>
+<body>
+    <h1>Review</h1>
+    <img id="displayedImage" src="" alt="Captured Image">
+    
+    <form id="reviewForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br>
+        <label for="comments">Comments:</label><br>
+        <textarea id="comments" name="comments" rows="4" cols="50"></textarea><br>
+        <button type="submit">Submit</button>
+    </form>
+    
+    <script>
+        // Retrieve the captured image data from localStorage or global variable
+        const capturedImageData = localStorage.getItem("capturedImage");
+
+        // Set the captured image data as the source for the displayed image
+        const displayedImage = document.getElementById("displayedImage");
+        displayedImage.src = capturedImageData;
+
+        // Handle form submission
+        const reviewForm = document.getElementById("reviewForm");
+        reviewForm.addEventListener("submit", function(event) {
+            // Prevent the form from submitting and refreshing the page
+            event.preventDefault();
+            
+            // Perform any necessary form validation and submission logic here
+            // Once the form is submitted, you can navigate to another page if needed
+            window.location.href = "thank_you.html"; // Replace with your actual thank you page
+        });
+    </script>
+</body>
+</html>
