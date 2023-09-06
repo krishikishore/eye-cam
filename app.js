@@ -24,6 +24,14 @@ cameraTrigger.onclick = function() {
     cameraSensor.getContext("2d").drawImage(cameraView, 0, 0);
     cameraOutput.src = cameraSensor.toDataURL("image/webp");
     cameraOutput.classList.add("taken");
+    // Store the captured image data in a variable
+    const capturedImageData = cameraSensor.toDataURL("image/webp");
+    // Store the image data in localStorage or a global variable
+    localStorage.setItem("capturedImage", capturedImageData);
+    // Add the class to indicate the image has been taken
+    cameraOutput.classList.add("taken");
+    // Navigate to the new screen
+    window.location.href = "display.html";
 };
 // Start the video stream when the window loads
 window.addEventListener("load", cameraStart, false);
